@@ -8,7 +8,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -26,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         setContent {
             Column(
                 modifier = Modifier
-                    .verticalScroll(rememberScrollState()).background(Color(0xFFF2F2F2)).fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .background(Color(0xFFF2F2F2))
+                    .fillMaxSize()
             ) {
                 Image(
                     painterResource(
@@ -42,14 +46,28 @@ class MainActivity : AppCompatActivity() {
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Text(
-                        text = "Happy meal",
-                        style = TextStyle(
-                            fontSize = 26.sp,
-                            fontFamily = FontFamily.SansSerif,
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Happy meal",
+                            style = TextStyle(
+                                fontSize = 26.sp,
+                                fontFamily = FontFamily.SansSerif,
+                            ),
+                            modifier = Modifier.align(Alignment.CenterVertically)
                         )
+                        Text(
+                            text = "$5.99",
+                            style = TextStyle(
+                                color = Color(0xff85bb65),
+                                fontSize = 18.sp,
+                                fontFamily = FontFamily.SansSerif,
+                            )
+                        )
+                    }
 
-                    )
                     Spacer(modifier = Modifier.padding(top = 10.dp))
                     Text(
                         text = "800 Calories",
@@ -59,14 +77,12 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                     Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(
-                        text = "$5.99",
-                        style = TextStyle(
-                            color = Color(0xff85bb65),
-                            fontSize = 18.sp,
-                            fontFamily = FontFamily.SansSerif,
-                        )
-                    )
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ) {
+                        Text(text = "Order Now")
+                    }
                 }
             }
         }
